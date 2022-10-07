@@ -1,4 +1,4 @@
-# proyecto01
+# LuciCake APP
 
 Proyecto 1 para asignatura Proyecto de Aplicaciones Moviles UDEC.
 
