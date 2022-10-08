@@ -24,7 +24,8 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        decoration: TextDecoration.underline,
+                        color: Color.fromARGB(255, 26, 60, 66)),
                   ),
                 ),
                 sizedBox,

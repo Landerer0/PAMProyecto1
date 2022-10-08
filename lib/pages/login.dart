@@ -63,7 +63,8 @@ class _loginState extends State<login> {
     const sizedBox = const SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
-        title: Text("LuciCake APP"),
+        backgroundColor: Color.fromRGBO(62, 127, 139, 1),
+        title: Text("Login"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -80,11 +81,11 @@ class _loginState extends State<login> {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    "Login",
+                    "Ingrese sus datos",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey),
+                        color: Colors.black),
                   ),
                 ),
                 Image.asset("assets/images/login.jpg"),

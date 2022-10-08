@@ -37,9 +37,10 @@ class _RememberUserState extends State<RememberUser> {
     const sizedBox = const SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(62, 127, 139, 1),
         centerTitle: true,
         title: Text(
-          "LuciCake APP",
+          "Remember password",
         ),
       ),
       body: SingleChildScrollView(
@@ -56,11 +57,11 @@ class _RememberUserState extends State<RememberUser> {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    "Recordar password",
+                    "Ingrese su usuario",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey),
+                        color: Colors.black),
                   ),
                 ),
                 sizedBox,
