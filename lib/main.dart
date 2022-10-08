@@ -1,3 +1,4 @@
+import 'package:proyecto01/pages/homeScreen.dart';
 import 'package:proyecto01/pages/login.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Calibri',
         primarySwatch: Colors.blueGrey,
       ),
-      home: const login(),
+      home: const HomeScreen(),
     );
   }
 }
