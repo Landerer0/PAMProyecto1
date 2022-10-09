@@ -9,8 +9,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const sizedBox = const SizedBox(height: 30);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(62, 127, 139, 1),
-      body: SingleChildScrollView(
+      //backgroundColor: Color.fromRGBO(62, 127, 139, 1),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.blueGrey, Colors.cyan],
+        )),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.all(16),
@@ -25,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline,
-                        color: Color.fromARGB(255, 26, 60, 66)),
+                        color: Color.fromRGBO(31, 64, 80, 1)),
                   ),
                 ),
                 sizedBox,
