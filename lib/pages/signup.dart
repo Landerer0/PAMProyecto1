@@ -17,11 +17,18 @@ class _SignUpState extends State<SignUp> {
   TextEditingController repeatPasswordController = TextEditingController();
 
   Future<void> validarDatos(String user, String password) async {
-    final response = await LoginService().validar(user, password);
+    final response = await LoginService().registroUsuario(user, password);
 
     if (response.statusCode == 200) {
-      //almacenar de alguna manera el login
-
+      // await es necesario para esperar a que el usuario presione el boton y alcance a leer el mensaje
+      await CoolAlert.show(
+        context: context,
+        type: CoolAlertType.success,
+        title: 'Felicitaciones',
+        text: 'Se ha registrado correctamente el usuario ' + user,
+        loopAnimation: false,
+      );
+      // el usuario se registro correctamente
       Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
     } else {
       CoolAlert.show(
@@ -59,7 +66,7 @@ class _SignUpState extends State<SignUp> {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    "Registre sus datos",
+                    "Registro",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -109,7 +116,27 @@ class _SignUpState extends State<SignUp> {
                         onPressed: () {
                           if (userController.text.length == 0) {
                             Fluttertoast.showToast(
-                                msg: "Ingrese un usuario valido",
+                                msg: "Ingrese un usuario",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else if (passwordController.text.length == 0 ||
+                              repeatPasswordController.text.length == 0) {
+                            Fluttertoast.showToast(
+                                msg: "Ingrese la contraseña y su repetición",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else if (passwordController.text !=
+                              repeatPasswordController.text) {
+                            Fluttertoast.showToast(
+                                msg: "Las contraseñas ingresadas no coinciden",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIosWeb: 1,

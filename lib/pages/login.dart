@@ -81,7 +81,7 @@ class _loginState extends State<login> {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    "Ingrese sus datos",
+                    "Ingreso",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -121,6 +121,15 @@ class _loginState extends State<login> {
                           if (userController.text.length == 0) {
                             Fluttertoast.showToast(
                                 msg: "Ingrese un usuario valido",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else if (passwordController.text.length == 0) {
+                            Fluttertoast.showToast(
+                                msg: "Ingrese una contraseña",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIosWeb: 1,

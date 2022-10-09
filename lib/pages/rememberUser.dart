@@ -1,8 +1,11 @@
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:proyecto01/dto/userDTO.dart';
 import 'package:proyecto01/pages/login.dart';
 import 'package:proyecto01/services/loginService.dart';
+
+import 'package:http/http.dart' as http;
 
 class RememberUser extends StatefulWidget {
   const RememberUser({super.key});
@@ -12,15 +15,23 @@ class RememberUser extends StatefulWidget {
 }
 
 class _RememberUserState extends State<RememberUser> {
+  late Future<List<UserDto>> futureUser;
   TextEditingController userController = TextEditingController();
 
-  Future<void> validarDatos(String user, String password) async {
-    final response = await LoginService().validar(user, password);
+  @override
+  void initState() {
+    super.initState();
+    futureUser = getUsers();
+  }
+
+  Future<List<UserDto>> getUsers() async {
+    final response = await http
+        .get(Uri.parse('https://b07641d697eb.sa.ngrok.io/api/usuarios'));
 
     if (response.statusCode == 200) {
-      //almacenar de alguna manera el login
+      //print(response.body);
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
+      return userDtoFromJson(response.body);
     } else {
       CoolAlert.show(
         context: context,
@@ -29,7 +40,38 @@ class _RememberUserState extends State<RememberUser> {
         text: 'Ha ocurrido un error, vuelve a intentarlo más tarde',
         loopAnimation: false,
       );
+      throw Exception('Error GET api usuarios');
     }
+  }
+
+  Future<void> validarDatos(String user) async {
+    // buscar el nombre del usuario
+    print("Se esta Validando los datos");
+    List listaUser = await futureUser;
+    for (var userLista in listaUser) {
+      if (userLista.login == user) {
+        await CoolAlert.show(
+          context: context,
+          type: CoolAlertType.success,
+          title: 'La password de ' + user + ' es:',
+          text: userLista.pass,
+          loopAnimation: false,
+        );
+
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => login()));
+
+        return;
+      }
+    }
+    Fluttertoast.showToast(
+        msg: "El usuario ingresado no existe",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 
   @override
@@ -95,8 +137,7 @@ class _RememberUserState extends State<RememberUser> {
                                 textColor: Colors.white,
                                 fontSize: 16.0);
                           } else {
-                            //validarDatos(
-                            //    userController.text, passwordController.text);
+                            validarDatos(userController.text);
                           }
                         },
                         child: Text("Recordar Password"))),
