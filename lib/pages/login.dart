@@ -37,7 +37,8 @@ class _loginState extends State<login> {
         context: context,
         type: CoolAlertType.error,
         title: 'Oops...',
-        text: 'Ha ocurrido un error, vuelve a intentarlo más tarde',
+        text:
+            "Error API", //'Ha ocurrido un error, vuelve a intentarlo más tarde',
         loopAnimation: false,
       );
     }

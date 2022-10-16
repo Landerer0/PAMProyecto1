@@ -2,6 +2,7 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proyecto01/dto/userDTO.dart';
+import 'package:proyecto01/global.dart';
 import 'package:proyecto01/pages/login.dart';
 import 'package:proyecto01/services/loginService.dart';
 
@@ -25,8 +26,8 @@ class _RememberUserState extends State<RememberUser> {
   }
 
   Future<List<UserDto>> getUsers() async {
-    final response = await http
-        .get(Uri.parse('https://b07641d697eb.sa.ngrok.io/api/usuarios'));
+    final response =
+        await http.get(Uri.parse(Global.baseApiUrl + '/api/usuarios'));
 
     if (response.statusCode == 200) {
       //print(response.body);
@@ -46,7 +47,7 @@ class _RememberUserState extends State<RememberUser> {
 
   Future<void> validarDatos(String user) async {
     // buscar el nombre del usuario
-    print("Se esta Validando los datos");
+    // print("Se esta Validando los datos");
     List listaUser = await futureUser;
     for (var userLista in listaUser) {
       if (userLista.login == user) {
@@ -54,7 +55,7 @@ class _RememberUserState extends State<RememberUser> {
           context: context,
           type: CoolAlertType.success,
           title: 'La password de ' + user + ' es:',
-          text: userLista.pass,
+          text: '"' + userLista.pass + '"',
           loopAnimation: false,
         );
 

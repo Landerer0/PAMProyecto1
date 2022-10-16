@@ -25,7 +25,7 @@ class _SignUpState extends State<SignUp> {
         context: context,
         type: CoolAlertType.success,
         title: 'Felicitaciones',
-        text: 'Se ha registrado correctamente el usuario ' + user,
+        text: 'Se ha registrado correctamente el usuario "' + user + '"',
         loopAnimation: false,
       );
       // el usuario se registro correctamente
