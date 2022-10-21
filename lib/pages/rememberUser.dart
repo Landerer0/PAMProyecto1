@@ -108,7 +108,7 @@ class _RememberUserState extends State<RememberUser> {
                   ),
                 ),
                 sizedBox,
-                Image.asset("assets/images/personLock.png"),
+                Image.asset("assets/images/rememberForget.png"),
                 sizedBox,
                 TextField(
                     controller: userController,
