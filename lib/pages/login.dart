@@ -156,7 +156,8 @@ class _loginState extends State<login> {
                     },
                     child: Text(
                       "¿Olvido su password?",
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                          color: Colors.blue, fontWeight: FontWeight.bold),
                     )),
                 sizedBox,
                 GestureDetector(
@@ -166,7 +167,8 @@ class _loginState extends State<login> {
                     },
                     child: Text(
                       "Registrese Aquí",
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                          color: Colors.blue, fontWeight: FontWeight.bold),
                     ))
               ],
             ),

@@ -62,7 +62,7 @@ flutter:
     - assets/pichu.png
     - assets/login.jpg
     - assets/openbook.png
-    - assets/rememberForget.png
+    - assets/personLock.png
     - assets/hall.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
