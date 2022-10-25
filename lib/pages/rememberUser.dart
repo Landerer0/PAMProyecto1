@@ -99,7 +99,7 @@ class _RememberUserState extends State<RememberUser> {
                 // ),
                 Container(
                   alignment: Alignment.center,
-                  child: Text(
+                  child: const Text(
                     "Ingrese su usuario",
                     style: TextStyle(
                         fontSize: 30,
@@ -141,7 +141,7 @@ class _RememberUserState extends State<RememberUser> {
                             validarDatos(userController.text);
                           }
                         },
-                        child: Text("Recordar Password"))),
+                        child: const Text("Recordar Password"))),
               ],
             ),
           ),

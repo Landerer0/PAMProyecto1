@@ -7,11 +7,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const sizedBox = const SizedBox(height: 30);
+    const sizedBox = SizedBox(height: 30);
     return Scaffold(
       //backgroundColor: Color.fromRGBO(62, 127, 139, 1),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -19,14 +19,14 @@ class HomeScreen extends StatelessWidget {
         )),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
                 sizedBox,
                 Container(
                   alignment: Alignment.center,
-                  child: Text(
-                    "Bienvenido",
+                  child: const Text(
+                    "¡Bienvenido!",
                     style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
@@ -43,12 +43,15 @@ class HomeScreen extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo, shape: StadiumBorder()),
+                            primary: Colors.indigo,
+                            shape: const StadiumBorder()),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => login()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const login()));
                         },
-                        child: Text("Login"))),
+                        child: const Text("Login"))),
                 sizedBox,
                 sizedBox,
                 SizedBox(
@@ -56,14 +59,15 @@ class HomeScreen extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo, shape: StadiumBorder()),
+                            primary: Colors.indigo,
+                            shape: const StadiumBorder()),
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUp()));
+                                  builder: (context) => const SignUp()));
                         },
-                        child: Text("Registrarme"))),
+                        child: const Text("Registrarme"))),
               ],
             ),
           ),

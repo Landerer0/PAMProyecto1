@@ -61,7 +61,7 @@ class _loginState extends State<login> {
 
   @override
   Widget build(BuildContext context) {
-    const sizedBox = const SizedBox(height: 30);
+    const sizedBox = SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(62, 127, 139, 1),
@@ -71,7 +71,7 @@ class _loginState extends State<login> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
                 // SizedBox(
@@ -81,7 +81,7 @@ class _loginState extends State<login> {
                 // ),
                 Container(
                   alignment: Alignment.center,
-                  child: Text(
+                  child: const Text(
                     "Ingreso",
                     style: TextStyle(
                         fontSize: 30,
@@ -117,7 +117,8 @@ class _loginState extends State<login> {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo, shape: StadiumBorder()),
+                            primary: Colors.indigo,
+                            shape: const StadiumBorder()),
                         onPressed: () {
                           if (userController.text.length == 0) {
                             Fluttertoast.showToast(
@@ -142,7 +143,7 @@ class _loginState extends State<login> {
                                 userController.text, passwordController.text);
                           }
                         },
-                        child: Text("Acceder"))),
+                        child: const Text("Acceder"))),
                 sizedBox,
                 GestureDetector(
                     /*onLongPress: () {
@@ -154,8 +155,8 @@ class _loginState extends State<login> {
                           MaterialPageRoute(
                               builder: (context) => RememberUser()));
                     },
-                    child: Text(
-                      "¿Olvido su password?",
+                    child: const Text(
+                      "¿Olvidó su password?",
                       style: TextStyle(
                           color: Colors.blue, fontWeight: FontWeight.bold),
                     )),
@@ -165,8 +166,8 @@ class _loginState extends State<login> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => SignUp()));
                     },
-                    child: Text(
-                      "Registrese Aquí",
+                    child: const Text(
+                      "Regístrese aquí",
                       style: TextStyle(
                           color: Colors.blue, fontWeight: FontWeight.bold),
                     ))
