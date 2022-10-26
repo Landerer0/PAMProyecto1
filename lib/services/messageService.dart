@@ -20,14 +20,14 @@ class MessageService {
   // Agregar un mensaje en el sistema
   Future<http.Response> ingresoMensaje(
       String login, String titulo, String descripcion) async {
-    return await http.post(
-      Uri.parse(Global.baseApiUrl +
-          '/api/mensajes?login=' +
-          login +
-          '&titulo=' +
-          titulo +
-          '&texto=' +
-          descripcion),
-    );
+    return await http.post(Uri.parse(Global.baseApiUrl + '/api/mensajes'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'login': login,
+          'titulo': titulo,
+          'texto': descripcion
+        }));
   }
 }
