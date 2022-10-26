@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:proyecto01/pages/agregarMensaje.dart';
 import 'package:proyecto01/pages/homeScreen.dart';
 import 'package:proyecto01/dto/messageDTO.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -71,7 +72,10 @@ class _PrincipalState extends State<Principal> {
             ListTile(
               title: const Text("Agregar"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const agregarMensaje()));
               },
             ),
             ListTile(
@@ -114,6 +118,7 @@ class _PrincipalState extends State<Principal> {
   }
 
   Widget tarjeta(MessageDto obj) {
+    const sizedBox = SizedBox(height: 20);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -122,29 +127,47 @@ class _PrincipalState extends State<Principal> {
             width: double.infinity,
             padding: const EdgeInsets.all(2),
             alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Fecha: ${obj.fecha}",
-                  style: const TextStyle(fontSize: 16),
-                ),
-                Text(
-                  "Login: ${obj.login}",
-                  style: const TextStyle(fontSize: 18),
-                ),
-                Text(
-                  "Título: ${obj.titulo}",
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Descripción: ${obj.texto}",
-                  style: const TextStyle(
-                    fontSize: 18,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
                   ),
-                ),
-              ],
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListTile(
+                    //leading: Icon(Icons.album),
+                    title: Text("${obj.titulo}",
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
+                    subtitle: Text("Por: ${obj.login}"),
+                  ),
+                  FractionallySizedBox(
+                    //para que el texto abarque un porcentaje del cuadro completo
+                    widthFactor: 0.95,
+                    child: Text(
+                      obj.texto,
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  sizedBox,
+                  Text(
+                    "Fecha: ${obj.fecha}",
+                    style: const TextStyle(
+                        fontSize: 16, fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
