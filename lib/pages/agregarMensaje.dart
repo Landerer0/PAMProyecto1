@@ -51,7 +51,7 @@ class _agregarMensajeState extends State<agregarMensaje> {
         backgroundColor: const Color.fromRGBO(62, 127, 139, 1),
         centerTitle: true,
         title: Text(
-          "Principal ${Global.login}",
+          "¡Bienvenido ${Global.login}!",
         ),
       ),
       body: SingleChildScrollView(
@@ -60,11 +60,6 @@ class _agregarMensajeState extends State<agregarMensaje> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // SizedBox(
-                //   width: 400,
-                //   height: 200,
-                //   child: Image.asset('assets/tocho.jpg', fit: BoxFit.fill),
-                // ),
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
@@ -88,7 +83,7 @@ class _agregarMensajeState extends State<agregarMensaje> {
                 sizedBox,
                 TextField(
                     controller: textController,
-                    minLines: 3,
+                    minLines: 10,
                     maxLines: null,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -106,7 +101,7 @@ class _agregarMensajeState extends State<agregarMensaje> {
                             primary: Colors.indigo,
                             shape: const StadiumBorder()),
                         onPressed: () {
-                          if (titleController.text.length == 0) {
+                          if (titleController.text.isEmpty) {
                             Fluttertoast.showToast(
                                 msg: "Ingrese un título",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -115,7 +110,7 @@ class _agregarMensajeState extends State<agregarMensaje> {
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-                          } else if (textController.text.length == 0) {
+                          } else if (textController.text.isEmpty) {
                             Fluttertoast.showToast(
                                 msg: "Ingrese un mensaje",
                                 toastLength: Toast.LENGTH_SHORT,

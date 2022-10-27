@@ -3,6 +3,7 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:proyecto01/pages/agregarMensaje.dart';
 import 'package:proyecto01/pages/homeScreen.dart';
 import 'package:proyecto01/dto/messageDTO.dart';
+import 'package:proyecto01/pages/integrantes.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import 'package:http/http.dart' as http;
@@ -57,19 +58,34 @@ class _PrincipalState extends State<Principal> {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Principal ${Global.login}"),
+          backgroundColor: Global.colorOficial,
+          centerTitle: true,
+          title: Text(
+            "¡Bienvenido ${Global.login}!",
+          ),
         ),
         drawer: Drawer(
             child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text("Hola!"),
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/drawer.jpg"),
+                      fit: BoxFit.cover)),
+              child: Container(
+                  alignment: Alignment.bottomLeft,
+                  child: Text("¡Bienvenido ${Global.login}!",
+                      style: const TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white))),
             ),
             ListTile(
+              leading: const Icon(
+                Icons.message,
+                color: Color.fromRGBO(62, 127, 139, 1),
+              ),
               title: const Text("Agregar"),
               onTap: () {
                 Navigator.push(
@@ -79,12 +95,19 @@ class _PrincipalState extends State<Principal> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.people,
+                  color: Color.fromRGBO(62, 127, 139, 1)),
               title: const Text("Integrantes"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Integrantes()));
               },
             ),
             ListTile(
+              leading: const Icon(Icons.exit_to_app,
+                  color: Color.fromRGBO(62, 127, 139, 1)),
               title: const Text("Salir"),
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const HomeScreen())),
@@ -112,6 +135,16 @@ class _PrincipalState extends State<Principal> {
                   child: CircularProgressIndicator(),
                 );
               }),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const agregarMensaje()));
+          },
+          backgroundColor: Global.colorOficial,
+          child: const Icon(Icons.message),
         ),
       ),
     );
