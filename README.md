@@ -1,7 +1,12 @@
-# LuciCake APP
+# LuciMensajes
 
-Proyecto 1 para asignatura Proyecto de Aplicaciones Moviles UDEC.
+Proyecto 1 para asignatura Proyecto de Aplicaciones Móviles UdeC.
 
-## ¿En que consiste?
+## ¿En qué consiste?
 
 Consiste en un proyecto en Flutter que contenga elementos de login y haga operación de get y post en una API.
+
+## Integrantes
+
+- Lucas Kraemer Ananías
+- Cristián Pérez Vásquez
