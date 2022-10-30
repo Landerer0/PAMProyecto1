@@ -69,22 +69,34 @@ class _PrincipalState extends State<Principal> {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/drawer.jpg"),
                       fit: BoxFit.cover)),
-              child: Container(
-                  alignment: Alignment.bottomLeft,
-                  child: Text("¡Bienvenido ${Global.login}!",
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.white,
+                    backgroundImage: AssetImage("assets/images/user.png"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text("¡Bienvenido ${Global.login}!",
                       style: const TextStyle(
-                          fontSize: 30,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white))),
+                          color: Colors.white))
+                ],
+              ),
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.message,
-                color: Color.fromRGBO(62, 127, 139, 1),
+                color: Global.colorOficial,
               ),
               title: const Text("Agregar"),
               onTap: () {
@@ -95,8 +107,7 @@ class _PrincipalState extends State<Principal> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.people,
-                  color: Color.fromRGBO(62, 127, 139, 1)),
+              leading: Icon(Icons.people, color: Global.colorOficial),
               title: const Text("Integrantes"),
               onTap: () {
                 Navigator.push(
@@ -106,8 +117,7 @@ class _PrincipalState extends State<Principal> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.exit_to_app,
-                  color: Color.fromRGBO(62, 127, 139, 1)),
+              leading: Icon(Icons.exit_to_app, color: Global.colorOficial),
               title: const Text("Salir"),
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const HomeScreen())),
@@ -178,10 +188,15 @@ class _PrincipalState extends State<Principal> {
                 children: [
                   ListTile(
                     //leading: Icon(Icons.album),
-                    title: Text("${obj.titulo}",
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
-                    subtitle: Text("Por: ${obj.login}"),
+                    title: Text(obj.titulo,
+                        style: TextStyle(
+                            color: Global.colorSecundario,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                    subtitle: Text(
+                      "Por: ${obj.login}",
+                      style: TextStyle(color: Global.colorTexto),
+                    ),
                   ),
                   FractionallySizedBox(
                     //para que el texto abarque un porcentaje del cuadro completo

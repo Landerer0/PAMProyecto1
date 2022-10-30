@@ -65,6 +65,11 @@ flutter:
     - assets/personLock.png
     - assets/hall.png
     - assets/drawer.jpg
+    - assets/crisperez.jpeg
+    - assets/lucaskraemer.png
+    - assets/user.png
+    - assets/welcome.png
+    - assets/welcome2.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

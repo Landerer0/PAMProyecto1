@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:proyecto01/pages/login.dart';
 import 'package:proyecto01/pages/signup.dart';
 
+import '../global.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -11,39 +13,38 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       //backgroundColor: Color.fromRGBO(62, 127, 139, 1),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.blueGrey, Colors.cyan],
+          colors: [Global.colorOficial, Global.colorSupport],
         )),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 sizedBox,
                 Container(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     "¡Bienvenido!",
                     style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                        color: Color.fromRGBO(31, 64, 80, 1)),
+                        color: Global.colorSecundario),
                   ),
                 ),
                 sizedBox,
-                Image.asset("assets/images/hall.png"),
-                sizedBox,
+                Image.asset("assets/images/welcome2.png"),
                 sizedBox,
                 SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo,
+                            backgroundColor: Global.colorSecundario,
                             shape: const StadiumBorder()),
                         onPressed: () {
                           Navigator.push(
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const login()));
                         },
-                        child: const Text("Login"))),
+                        child: const Text("Ingresar"))),
                 sizedBox,
                 sizedBox,
                 SizedBox(
@@ -59,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo,
+                            backgroundColor: Global.colorSecundario,
                             shape: const StadiumBorder()),
                         onPressed: () {
                           Navigator.push(

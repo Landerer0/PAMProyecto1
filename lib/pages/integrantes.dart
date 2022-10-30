@@ -16,10 +16,10 @@ class _IntegrantesState extends State<Integrantes> {
     return Scaffold(
       //const sizedBox = SizedBox(height: 20);
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(62, 127, 139, 1),
+        backgroundColor: Global.colorOficial,
         centerTitle: true,
         title: Text(
-          "Principal ${Global.login}",
+          "¡Bienvenido ${Global.login}!",
         ),
       ),
       body: Center(
@@ -46,29 +46,53 @@ class _IntegrantesState extends State<Integrantes> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const ListTile(
+                    ListTile(
                       //leading: Icon(Icons.album),
                       title: Text("Integrantes",
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
+                              color: Global.colorSecundario,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold)),
                       //subtitle: Text("Por: ${obj.login}"),
                     ),
                     FractionallySizedBox(
                       //para que el texto abarque un porcentaje del cuadro completo
                       widthFactor: 0.95,
                       child: Column(
-                        children: const [
-                          Text(
-                            "Lucas Kraemer Ananías",
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                          Text(
-                            "Cristián Pérez Vásquez",
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              CircleAvatar(
+                                radius: 60,
+                                backgroundImage: AssetImage(
+                                    "assets/images/lucaskraemer.png"),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "Lucas Kraemer Ananías",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              CircleAvatar(
+                                radius: 60,
+                                backgroundImage:
+                                    AssetImage("assets/images/crisperez.jpeg"),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "Cristián Pérez Vásquez",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(height: 30),
+                              Text(
+                                  "Facultad de Ingeniería, Universidad de Concepción",
+                                  style: TextStyle(color: Colors.blueGrey))
+                            ],
                           ),
                         ],
                       ),

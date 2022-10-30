@@ -24,10 +24,12 @@ class _agregarMensajeState extends State<agregarMensaje> {
     if (response.statusCode == 201) {
       // await es necesario para esperar a que el usuario presione el boton y alcance a leer el mensaje
       await CoolAlert.show(
+        backgroundColor: Global.colorSupport,
+        confirmBtnColor: Global.colorSecundario,
         context: context,
         type: CoolAlertType.success,
         title: 'Felicitaciones',
-        text: 'Se ha registrado ingresado correctamente el mensaje!',
+        text: '¡Se ha registrado ingresado correctamente el mensaje!',
         loopAnimation: false,
       );
       // el usuario se registro correctamente
@@ -35,6 +37,8 @@ class _agregarMensajeState extends State<agregarMensaje> {
           context, MaterialPageRoute(builder: (context) => Principal()));
     } else {
       CoolAlert.show(
+        backgroundColor: Global.colorSupport,
+        confirmBtnColor: Global.colorSecundario,
         context: context,
         type: CoolAlertType.error,
         title: 'Oops...',
@@ -48,7 +52,7 @@ class _agregarMensajeState extends State<agregarMensaje> {
     const sizedBox = SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(62, 127, 139, 1),
+        backgroundColor: Global.colorOficial,
         centerTitle: true,
         title: Text(
           "¡Bienvenido ${Global.login}!",
@@ -62,12 +66,12 @@ class _agregarMensajeState extends State<agregarMensaje> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     "Agregar nuevo mensaje",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: Global.colorSecundario),
                   ),
                 ),
                 sizedBox,
@@ -98,7 +102,7 @@ class _agregarMensajeState extends State<agregarMensaje> {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo,
+                            backgroundColor: Global.colorSecundario,
                             shape: const StadiumBorder()),
                         onPressed: () {
                           if (titleController.text.isEmpty) {

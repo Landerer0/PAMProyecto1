@@ -34,6 +34,8 @@ class _loginState extends State<login> {
           context, MaterialPageRoute(builder: (context) => Principal()));
     } else {
       CoolAlert.show(
+        backgroundColor: Global.colorSupport,
+        confirmBtnColor: Global.colorSecundario,
         context: context,
         type: CoolAlertType.error,
         title: 'Oops...',
@@ -64,8 +66,8 @@ class _loginState extends State<login> {
     const sizedBox = SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(62, 127, 139, 1),
-        title: Text("Login"),
+        backgroundColor: Global.colorOficial,
+        title: const Text("Ingreso"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -74,19 +76,14 @@ class _loginState extends State<login> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // SizedBox(
-                //   width: 400,
-                //   height: 200,
-                //   child: Image.asset('assets/tocho.jpg', fit: BoxFit.fill),
-                // ),
                 Container(
                   alignment: Alignment.center,
-                  child: const Text(
-                    "Ingreso",
+                  child: Text(
+                    "Ingresa tus credenciales",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: Global.colorSecundario),
                   ),
                 ),
                 Image.asset("assets/images/login.jpg"),
@@ -97,7 +94,7 @@ class _loginState extends State<login> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
                         hintText: "Ingrese su usuario",
-                        labelText: "User",
+                        labelText: "Usuario",
                         suffixIcon:
                             const Icon(Icons.email, color: Colors.black54))),
                 sizedBox,
@@ -107,8 +104,8 @@ class _loginState extends State<login> {
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
-                        hintText: "Ingrese su password",
-                        labelText: "password",
+                        hintText: "Ingrese su contraseña",
+                        labelText: "Contraseña",
                         suffixIcon: const Icon(Icons.remove_red_eye))),
                 sizedBox,
                 sizedBox,
@@ -117,19 +114,19 @@ class _loginState extends State<login> {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo,
+                            backgroundColor: Global.colorSecundario,
                             shape: const StadiumBorder()),
                         onPressed: () {
-                          if (userController.text.length == 0) {
+                          if (userController.text.isEmpty) {
                             Fluttertoast.showToast(
-                                msg: "Ingrese un usuario valido",
+                                msg: "Ingrese un usuario válido",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIosWeb: 1,
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-                          } else if (passwordController.text.length == 0) {
+                          } else if (passwordController.text.isEmpty) {
                             Fluttertoast.showToast(
                                 msg: "Ingrese una contraseña",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -146,30 +143,31 @@ class _loginState extends State<login> {
                         child: const Text("Acceder"))),
                 sizedBox,
                 GestureDetector(
-                    /*onLongPress: () {
-                      //
-                    },*/
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RememberUser()));
+                              builder: (context) => const RememberUser()));
                     },
-                    child: const Text(
-                      "¿Olvidó su password?",
+                    child: Text(
+                      "¿Olvidó su contraseña?",
                       style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                          color: Global.colorTexto,
+                          fontWeight: FontWeight.bold),
                     )),
                 sizedBox,
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUp()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUp()));
                     },
-                    child: const Text(
+                    child: Text(
                       "Regístrese aquí",
                       style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                          color: Global.colorTexto,
+                          fontWeight: FontWeight.bold),
                     ))
               ],
             ),

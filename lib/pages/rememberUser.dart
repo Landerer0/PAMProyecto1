@@ -4,7 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proyecto01/dto/userDTO.dart';
 import 'package:proyecto01/global.dart';
 import 'package:proyecto01/pages/login.dart';
-import 'package:proyecto01/services/loginService.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -35,6 +34,8 @@ class _RememberUserState extends State<RememberUser> {
       return userDtoFromJson(response.body);
     } else {
       CoolAlert.show(
+        backgroundColor: Global.colorSupport,
+        confirmBtnColor: Global.colorSecundario,
         context: context,
         type: CoolAlertType.error,
         title: 'Oops...',
@@ -46,15 +47,15 @@ class _RememberUserState extends State<RememberUser> {
   }
 
   Future<void> validarDatos(String user) async {
-    // buscar el nombre del usuario
-    // print("Se esta Validando los datos");
     List listaUser = await futureUser;
     for (var userLista in listaUser) {
       if (userLista.login == user) {
         await CoolAlert.show(
+          backgroundColor: Global.colorSupport,
+          confirmBtnColor: Global.colorSecundario,
           context: context,
           type: CoolAlertType.success,
-          title: 'La password de ' + user + ' es:',
+          title: 'La password de $user es:',
           text: '"' + userLista.pass + '"',
           loopAnimation: false,
         );
@@ -77,34 +78,29 @@ class _RememberUserState extends State<RememberUser> {
 
   @override
   Widget build(BuildContext context) {
-    const sizedBox = const SizedBox(height: 30);
+    const sizedBox = SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(62, 127, 139, 1),
+        backgroundColor: Global.colorOficial,
         centerTitle: true,
-        title: Text(
-          "Remember password",
+        title: const Text(
+          "¿Olvidó su contraseña?",
         ),
       ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // SizedBox(
-                //   width: 400,
-                //   height: 200,
-                //   child: Image.asset('assets/tocho.jpg', fit: BoxFit.fill),
-                // ),
                 Container(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     "Ingrese su usuario",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: Global.colorSecundario),
                   ),
                 ),
                 sizedBox,
@@ -116,7 +112,7 @@ class _RememberUserState extends State<RememberUser> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
                         hintText: "Ingrese su usuario",
-                        labelText: "User",
+                        labelText: "Usuario",
                         suffixIcon:
                             const Icon(Icons.email, color: Colors.black54))),
                 sizedBox,
@@ -126,11 +122,12 @@ class _RememberUserState extends State<RememberUser> {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo, shape: StadiumBorder()),
+                            backgroundColor: Global.colorSecundario,
+                            shape: const StadiumBorder()),
                         onPressed: () {
-                          if (userController.text.length == 0) {
+                          if (userController.text.isEmpty) {
                             Fluttertoast.showToast(
-                                msg: "Ingrese un usuario valido",
+                                msg: "Ingrese un usuario válido",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIosWeb: 1,
@@ -141,7 +138,7 @@ class _RememberUserState extends State<RememberUser> {
                             validarDatos(userController.text);
                           }
                         },
-                        child: const Text("Recordar Password"))),
+                        child: const Text("Recordar contraseña"))),
               ],
             ),
           ),

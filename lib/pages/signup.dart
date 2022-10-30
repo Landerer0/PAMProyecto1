@@ -4,6 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proyecto01/pages/login.dart';
 import 'package:proyecto01/services/loginService.dart';
 
+import '../global.dart';
+
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -22,16 +24,20 @@ class _SignUpState extends State<SignUp> {
     if (response.statusCode == 200) {
       // await es necesario para esperar a que el usuario presione el boton y alcance a leer el mensaje
       await CoolAlert.show(
+        backgroundColor: Global.colorSupport,
+        confirmBtnColor: Global.colorSecundario,
         context: context,
         type: CoolAlertType.success,
         title: 'Felicitaciones',
-        text: 'Se ha registrado correctamente el usuario "' + user + '"',
+        text: 'Se ha registrado correctamente el usuario "$user"',
         loopAnimation: false,
       );
       // el usuario se registro correctamente
       Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
     } else {
       CoolAlert.show(
+        backgroundColor: Global.colorSupport,
+        confirmBtnColor: Global.colorSecundario,
         context: context,
         type: CoolAlertType.error,
         title: 'Oops...',
@@ -46,10 +52,10 @@ class _SignUpState extends State<SignUp> {
     const sizedBox = SizedBox(height: 30);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(62, 127, 139, 1),
+        backgroundColor: Global.colorOficial,
         centerTitle: true,
         title: const Text(
-          "Sign Up",
+          "Registro",
         ),
       ),
       body: SingleChildScrollView(
@@ -65,12 +71,12 @@ class _SignUpState extends State<SignUp> {
                 // ),
                 Container(
                   alignment: Alignment.center,
-                  child: const Text(
-                    "Registro",
+                  child: Text(
+                    "Nuevo usuario",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: Global.colorSecundario),
                   ),
                 ),
                 sizedBox,
@@ -82,7 +88,7 @@ class _SignUpState extends State<SignUp> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
                         hintText: "Ingrese su usuario",
-                        labelText: "User",
+                        labelText: "Usuario",
                         suffixIcon:
                             const Icon(Icons.email, color: Colors.black54))),
                 sizedBox,
@@ -92,8 +98,8 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
-                        hintText: "Ingrese su password",
-                        labelText: "Password",
+                        hintText: "Ingrese su contraseña",
+                        labelText: "Contraseña",
                         suffixIcon: const Icon(Icons.remove_red_eye))),
                 sizedBox,
                 TextField(
@@ -102,8 +108,8 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(40)),
-                        hintText: "Repita su password",
-                        labelText: "Repetir password",
+                        hintText: "Repita su contraseña",
+                        labelText: "Repetir contraseña",
                         suffixIcon: const Icon(Icons.remove_red_eye))),
                 sizedBox,
                 sizedBox,
@@ -112,10 +118,10 @@ class _SignUpState extends State<SignUp> {
                     height: 50,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.indigo,
+                            backgroundColor: Global.colorSecundario,
                             shape: const StadiumBorder()),
                         onPressed: () {
-                          if (userController.text.length == 0) {
+                          if (userController.text.isEmpty) {
                             Fluttertoast.showToast(
                                 msg: "Ingrese un usuario",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -124,8 +130,8 @@ class _SignUpState extends State<SignUp> {
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
-                          } else if (passwordController.text.length == 0 ||
-                              repeatPasswordController.text.length == 0) {
+                          } else if (passwordController.text.isEmpty ||
+                              repeatPasswordController.text.isEmpty) {
                             Fluttertoast.showToast(
                                 msg: "Ingrese la contraseña y su repetición",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -149,7 +155,7 @@ class _SignUpState extends State<SignUp> {
                                 userController.text, passwordController.text);
                           }
                         },
-                        child: Text("Registrarme"))),
+                        child: const Text("Registrarme"))),
                 sizedBox,
               ],
             ),
